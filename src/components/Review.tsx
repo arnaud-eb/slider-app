@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { FaQuoteRight } from "react-icons/fa";
 
+import { limit } from "./Reviews";
 import { ReviewType } from "../assets/data";
 
 interface ReviewProps extends ReviewType {
@@ -28,15 +29,14 @@ const ReviewContainer = styled.article<ReviewContainerProps>`
     opacity: 1;
     transform: translateX(0);
   `}
-
   ${(p) =>
-    p.idReview === p.indexReview - 1 &&
+    p.idReview === limit(p.indexReview - 1) &&
     `
     transform: translateX(-100%);
   `}
 
   ${(p) =>
-    p.idReview === p.indexReview + 1 &&
+    p.idReview === limit(p.indexReview + 1) &&
     `
     transform: translateX(100%);
   `}
